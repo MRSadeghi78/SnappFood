@@ -1,0 +1,43 @@
+.foods-container {
+  height: auto;
+  max-height: calc(100vh - 64px);
+  width: calc(60% - 20px);
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 30px;
+
+  margin-top: 10px;
+}
+
+.show-foods-container {
+  height: calc(100vh - 64px);
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  top: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
+
+@media only screen and (max-width: 1240px) {
+  .foods-container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media only screen and (max-width: 825px) {
+  .foods-container {
+    grid-template-columns: auto;
+  }
+}
+
+
+
+

@@ -1,0 +1,23 @@
+<mat-card>
+  <form (ngSubmit)="search()">
+    <mat-form-field class="restaurant-name">
+      <mat-label>اسم رستوران</mat-label>
+      <input [(ngModel)]="restaurantName" name="restaurant-name" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field class="restaurant-name">
+      <mat-label>منطقه رستوران</mat-label>
+      <input [(ngModel)]="restaurantRegion" name="customer-region" matInput type="number" class="example-right-align" placeholder="0" min="1" max="22">
+      <mat-icon matSuffix class="map-icon">place</mat-icon>
+    </mat-form-field><br>
+
+    <mat-form-field class="restaurant-name">
+      <mat-label>اسم غذا</mat-label>
+      <input [(ngModel)]="foodName" name="food-name" matInput placeholder="">
+    </mat-form-field>
+
+        <div class="example-button-row">
+            <button name="submit" mat-raised-button color="accent" style="float: right;" type="submit">جست و جو</button>
+        </div>
+  </form>
+</mat-card>

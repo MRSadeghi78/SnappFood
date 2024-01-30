@@ -1,0 +1,88 @@
+<mat-card>
+    <form (ngSubmit)="updateManagerProfile()">
+        <div class="name-region-container">
+            <p class="name">
+                <mat-form-field appearance="standard">
+                    <mat-label>نام رستوران</mat-label>
+                    <input name="restaurantName" matInput [(ngModel)]="managersService.restaurantInformation.restaurantName" placeholder="">
+                </mat-form-field>
+            </p>
+
+            <p class="region">
+                <mat-form-field>
+                    <mat-label>منطقه</mat-label>
+                    <input name="restaurantRegion" matInput [(ngModel)]="managersService.restaurantInformation.restaurantRegion" class="example-right-align" placeholder="" min="1"
+                        max="22">
+                    <mat-icon matSuffix class="map-icon" (click)="showMap = !showMap">place</mat-icon>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field class="example-full-width">
+                    <mat-label>آدرس رستوران</mat-label>
+                    <textarea name="address" matInput [(ngModel)]="managersService.restaurantInformation.address" placeholder=""></textarea>
+                </mat-form-field>
+            </p>
+        </div>
+
+        <mat-form-field class="regions">
+            <mat-label>مناطق تحت پوشش</mat-label>
+            <mat-select [formControl]="toppings" [multiple]="true">
+
+                <mat-select-trigger>
+                    <span> {{ getTrigerReionsText() }}</span>
+                </mat-select-trigger>
+
+                <mat-option *ngFor="let region of regions" [value]="region.value">
+                    {{region.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-icon matSuffix class="region-map map-icon"
+            (click)="showMap = true; coveredRegionMap = true; toppings.setValue([])">place</mat-icon>
+
+        <div class="range-time">
+            <div class="labels">
+                <div class="start">شروع ساعت کار</div>
+                <div class="end">اتمام ساعت کار</div>
+            </div>
+
+            <div class="inputs">
+                <input name="start-time" class="start" type="time">
+                <input name="end-time" class="end" type="time">
+            </div>
+        </div>
+
+        <div class="name-region-container">
+        <p class="name">
+            <mat-form-field appearance="standard">
+                <mat-label>زمان تحویل غذا</mat-label>
+                <input name="sendFoodTime" matInput [(ngModel)]="managersService.restaurantInformation.sendFoodTime" placeholder="" type="number" class="example-right-align">
+
+            </mat-form-field>
+        </p>
+
+        <p class="region">
+            <mat-form-field>
+                <mat-label>هزینه تحویل غذا</mat-label>
+                <input name="sendFoodPrice" matInput [(ngModel)]="managersService.restaurantInformation.sendFoodPrice" type="number" class="example-right-align">
+
+            </mat-form-field>
+        </p>
+    </div>
+
+        <div class="example-button-row" style="display: inline-block; margin-bottom: 0;">
+            <button mat-raised-button color="accent" style="float: right; margin-bottom: -10px;" type="submit">به روز
+                رسانی</button>
+            <ng-content></ng-content>
+        </div>
+    </form>
+
+</mat-card>
+
+<app-map-visualizer *ngIf="showMap" (regionClicked)="onRegionClicked($event)">
+    <div [ngClass]="{'show-map': showMap}" id="map-container"></div>
+</app-map-visualizer>
+
+<button style="z-index: 10; position: fixed; top: 10px; left: 10px;" *ngIf="coveredRegionMap"
+    (click)="coveredRegionMap = false; showMap = false;" mat-raised-button color="accent">ثبت مناطق انتخابی</button>

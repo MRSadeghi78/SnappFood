@@ -1,0 +1,5 @@
+<app-login-register *ngIf="panelSelector.selector === SnappFoodPanelSelector.LoginRegister"></app-login-register>
+
+<app-managers-panel *ngIf="panelSelector.selector === SnappFoodPanelSelector.Manager"></app-managers-panel>
+
+<app-customer-panel *ngIf="panelSelector.selector === SnappFoodPanelSelector.Customer"></app-customer-panel>

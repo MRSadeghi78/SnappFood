@@ -1,0 +1,31 @@
+<div class="first-page-container" *ngIf="!this.loginRegisterService.isInformationPanel">
+    <mat-card>
+        <mat-tab-group>
+            <mat-tab label="ثبت نام">
+                <app-register-managers *ngIf="this.loginRegisterService.isManager">
+                    <button class="change-panel-button" (click)="changeButtonClicked()">پنل مشتری</button>
+                </app-register-managers>
+                <app-register-customers *ngIf="!this.loginRegisterService.isManager">
+                    <button class="change-panel-button" (click)="changeButtonClicked()">پنل مدیریت</button>
+                </app-register-customers>
+            </mat-tab>
+
+            <mat-tab label="ورود">
+                <app-login-managers *ngIf="this.loginRegisterService.isManager">
+                    <button class="change-panel-button" (click)="changeButtonClicked()">پنل مشتری</button>
+                </app-login-managers>
+                <app-login-customers *ngIf="!this.loginRegisterService.isManager">
+                    <button class="change-panel-button" (click)="changeButtonClicked()">پنل مدیریت</button>
+                </app-login-customers>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>
+
+<div class="second-page-container" *ngIf="this.loginRegisterService.isInformationPanel">
+    <mat-card>
+        <mat-card-title>اطلاعات</mat-card-title>
+        <app-managers-register-information *ngIf="this.loginRegisterService.isManager"></app-managers-register-information>
+        <app-customers-register-information *ngIf="!this.loginRegisterService.isManager"></app-customers-register-information>
+    </mat-card>
+</div>

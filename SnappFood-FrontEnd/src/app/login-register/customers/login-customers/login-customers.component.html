@@ -1,0 +1,32 @@
+<form (ngSubmit)="login()">
+    <mat-form-field>
+        <mat-label>تلفن</mat-label>
+        <input [(ngModel)]="loginRegisterService.customerLogin.phone" type="email" matInput [formControl]="phoneFormControl" placeholder="09123456789">
+        <mat-error *ngIf="phoneFormControl.errors?.pattern && !phoneFormControl.hasError('required')">
+            شماره تلفن شما درست نمی باشد
+        </mat-error>
+        <mat-error *ngIf="phoneFormControl.hasError('required')">
+            وارد کردن شماره تلفن <strong>الزامی</strong> است.
+        </mat-error>
+        <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>رمز خود را وارد کنید</mat-label>
+        <input [(ngModel)]="loginRegisterService.customerLogin.password" matInput [formControl]="passwordFormControl" [type]="hidePassword ? 'password' : 'text'">
+        <button class="hide-password-btn" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword" type="button">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+            وارد کردن رمز <strong>الزامی</strong> است.
+        </mat-error>
+    </mat-form-field>
+
+    <section>
+        <div class="example-button-row">
+            <button mat-raised-button color="accent" type="submit">ورود</button>
+            <ng-content></ng-content>
+        </div>
+    </section>
+</form>

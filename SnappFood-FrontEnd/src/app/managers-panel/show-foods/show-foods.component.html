@@ -1,0 +1,6 @@
+<div class="show-foods-container" *ngIf="!isFoodPanelDetail">
+    <div class="foods-container" >
+        <app-food *ngFor="let food_tmp of managersService.foods; let i = index" [food]="food_tmp"  (clicked)="onFoodClick(i)"></app-food>
+    </div>
+</div>
+<app-food-detail [food]="foodDetail" *ngIf="isFoodPanelDetail"></app-food-detail>

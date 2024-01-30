@@ -1,0 +1,44 @@
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.name-region-container {
+  width: 100%;
+}
+
+.name,
+.region {
+  display: inline-block;
+  width: calc(50% - 20px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+.region {
+  padding-top: 14px;
+  float: left;
+}
+
+.example-full-width {
+  width: calc(100% - 20px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.example-button-row button {
+  margin: 10px;
+}

@@ -1,0 +1,86 @@
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+mat-card {
+  height: 230px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.name-region-container {
+  width: 100%;
+}
+
+.name,
+.region {
+  display: inline-block;
+  width: calc(50% - 20px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+.region {
+  padding-top: 14px;
+  float: left;
+}
+
+.example-full-width {
+  width: calc(100% - 20px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 0px;
+}
+
+.map-icon {
+  cursor: pointer;
+}
+
+.show-map {
+  top: 0px !important;
+}
+
+.regions {
+  width: calc(100% - 60px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  float: right;
+}
+
+.region-map {
+  margin-top: 20px;
+  margin-right: 10px;
+  float: right;
+}
+
+#map-container {
+  position: fixed;
+  top: 100vh;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.example-button-row button {
+  margin: 10px;
+}

@@ -1,0 +1,108 @@
+<form (ngSubmit)="register()">
+    <div class="name-region-container">
+        <p class="name">
+            <mat-form-field appearance="standard">
+                <mat-label>نام رستوران</mat-label>
+                <input [formControl]="restaurantNameFormControl" name="restaurantName" [(ngModel)]="loginRegisterService.managerRegister.restaurantName" matInput placeholder="">
+                <mat-error *ngIf="restaurantNameFormControl.hasError('required')">
+                    وارد کردن نام رستوران <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+
+        <p class="region">
+            <mat-form-field>
+                <mat-label>منطقه</mat-label>
+                <input [formControl]="restaurantRegionFormControl" name="restaurantRegion" matInput [(ngModel)]="loginRegisterService.managerRegister.restaurantRegion" type="number" class="example-right-align" placeholder="0"
+                    min="1" max="22">
+                <mat-icon matSuffix class="map-icon" (click)="showMap = !showMap">place</mat-icon>
+                <mat-error *ngIf="restaurantRegionFormControl.hasError('required')">
+                    وارد کردن منطقه <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field class="example-full-width">
+                <mat-label>آدرس رستوران</mat-label>
+                <textarea [formControl]="addressFormControl" name="address" [(ngModel)]="loginRegisterService.managerRegister.address" matInput placeholder=""></textarea>
+                <mat-error *ngIf="addressFormControl.hasError('required')">
+                    وارد کردن آدرس <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+    </div>
+
+    <mat-form-field class="regions">
+        <mat-label>مناطق تحت پوشش</mat-label>
+        <mat-select [formControl]="toppings" [multiple]="true">
+
+            <mat-select-trigger>
+                <span> {{ getTrigerReionsText() }}</span>
+            </mat-select-trigger>
+
+            <mat-option *ngFor="let region of regions" [value]="region.value">
+                {{region.viewValue}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="toppings.hasError('required')">
+            وارد کردن مناطق تحت پوشش <strong>الزامی</strong> است.
+        </mat-error>
+    </mat-form-field>
+    <mat-icon matSuffix class="region-map map-icon" (click)="showMap = true; coveredRegionMap = true; toppings.setValue([])">place</mat-icon>
+
+    <div class="range-time">
+        <div class="labels">
+            <div class="start">شروع ساعت کار</div>
+            <div class="end">اتمام ساعت کار</div>
+        </div>
+
+        <div class="inputs">
+            <input [(ngModel)]="this.loginRegisterService.managerRegister.startWorkTime" [formControl]="startTimeFormControl" name="start-time" class="start" type="time">
+            <!--mat-error *ngIf="startTimeFormControl.hasError('required')">
+                وارد کردن شروع ساعت کار <strong>الزامی</strong> است.
+            </mat-error-->
+            <input [(ngModel)]="this.loginRegisterService.managerRegister.endWorkTime" [formControl]="endTimeFormControl" name="end-time" class="end" type="time">
+            <!--mat-error *ngIf="endTimeFormControl.hasError('required')">
+                وارد کردن اتمام ساعت کار <strong>الزامی</strong> است.
+            </mat-error-->
+        </div>
+    </div>
+
+    <div class="name-region-container">
+        <p class="name">
+            <mat-form-field appearance="standard">
+                <mat-label>زمان تحویل غذا</mat-label>
+                <input [formControl]="sendFoodTimeFormControl" name="sendFoodTime" [(ngModel)]="loginRegisterService.managerRegister.sendFoodTime" matInput placeholder="" type="number" class="example-right-align">
+                <mat-error *ngIf="sendFoodTimeFormControl.hasError('required')">
+                    وارد کردن زمان تحویل غذا <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+
+        <p class="region">
+            <mat-form-field>
+                <mat-label>هزینه تحویل غذا</mat-label>
+                <input [formControl]="sendFoodPriceFormControl" name="sendFoodPrice" matInput [(ngModel)]="loginRegisterService.managerRegister.sendFoodPrice" type="number" class="example-right-align">
+                <mat-error *ngIf="sendFoodPriceFormControl.hasError('required')">
+                    وارد کردن هزینه تحویل غذا <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+    </div>
+
+    <section>
+        <div class="example-button-row">
+            <button mat-raised-button color="accent" style="float: right;" type="submit">ثبت</button>
+            <ng-content></ng-content>
+        </div>
+    </section>
+</form>
+
+<app-map-visualizer *ngIf="showMap" (regionClicked)="onRegionClicked($event)">
+    <div [ngClass]="{'show-map': showMap}" id="map-container"></div>
+</app-map-visualizer>
+
+<button style="z-index: 10; position: fixed; top: 10px; left: 10px;"
+*ngIf="coveredRegionMap" (click)="coveredRegionMap = false; showMap = false;"
+ mat-raised-button color="accent">ثبت مناطق انتخابی</button>

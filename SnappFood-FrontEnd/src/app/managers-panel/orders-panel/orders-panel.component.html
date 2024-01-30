@@ -1,0 +1,6 @@
+<div class="show-foods-container" *ngIf="!orderPanelService.isOrderPanelDetail">
+    <div class="foods-container">
+        <app-order *ngFor="let order of managersSerivce.orders; let i = index" [order]="order"  (clicked)="onOrderClick(i)"></app-order>
+    </div>
+</div>
+<app-order-detail [order]="orderDetail" *ngIf="orderPanelService.isOrderPanelDetail"></app-order-detail>

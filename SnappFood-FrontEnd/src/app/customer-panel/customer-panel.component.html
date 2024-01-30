@@ -1,0 +1,22 @@
+<mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="aboveMenu">حساب من</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="below">
+        <button mat-menu-item (click)="customersSerivce.panelSelector = CustomerPanelSelector.Profile">پروفایل</button>
+        <button mat-menu-item (click)="exit()">خروج</button>
+    </mat-menu>
+
+    <button mat-button (click)="showFoods()">غذاها</button>
+    <button mat-button (click)="customersSerivce.panelSelector = CustomerPanelSelector.Orders">سفارشات</button>
+    <button mat-button (click)="customersSerivce.panelSelector = CustomerPanelSelector.Search">جست و جو</button>
+
+</mat-toolbar>
+<div class="balance">
+  {{customersSerivce.customerInfo.balance}} :اعتبار
+</div>
+
+<div class="container">
+    <app-foods-customer-panel *ngIf="customersSerivce.panelSelector === CustomerPanelSelector.Foods"></app-foods-customer-panel>
+    <app-orders-customer-panel *ngIf="customersSerivce.panelSelector === CustomerPanelSelector.Orders"></app-orders-customer-panel>
+    <app-profile-customer-panel *ngIf="customersSerivce.panelSelector === CustomerPanelSelector.Profile"></app-profile-customer-panel>
+    <app-search-food *ngIf="customersSerivce.panelSelector === CustomerPanelSelector.Search"></app-search-food>
+</div>

@@ -1,0 +1,42 @@
+<div class="food-detail-container">
+    <div class="header">
+        <mat-card>
+            <mat-card-title>{{ order.customerName }}</mat-card-title>
+            <mat-card-content>
+                <p>
+                    مبلغ کل: {{ order.price }}
+                </p>
+                <p *ngIf="order.situation === 'Pending'">
+                    در انتظار تایید
+                </p>
+                <p *ngIf="order.situation === 'Preparing'">
+                    در حال آماده سازی
+                </p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-button (click)="acceptOrder()" *ngIf="order.situation === 'Pending'">تایید</button>
+                <button mat-button (click)="return()">بازگشت</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <div class="body">
+        <div class="comment" *ngFor="let food of order.foods">
+            <mat-card>
+                <mat-card-title>
+                    {{food.name}}
+                </mat-card-title>
+
+                <mat-card-content>
+                    <div>
+                        {{food.discription}}
+                    </div><br>
+                    <div>
+                        قیمت: {{food.price}}
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

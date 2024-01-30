@@ -1,0 +1,22 @@
+<mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="aboveMenu">{{managersService.restaurantInformation.restaurantName}}</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="below">
+        <button mat-menu-item (click)="panelSelector = PanelSelector.Profile">پروفایل</button>
+        <button mat-menu-item (click)="exit()">خروج</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="belowMenu">غذا ها</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item (click)="panelSelector = PanelSelector.ShowFood">نمایش غذاها</button>
+        <button mat-menu-item (click)="panelSelector = PanelSelector.AddFood">اضافه کردن غذا</button>
+    </mat-menu>
+
+    <button mat-button (click)="panelSelector = PanelSelector.Orders">لیست سفارشات</button>
+</mat-toolbar>
+
+<div class="container">
+    <app-profile *ngIf="panelSelector === PanelSelector.Profile"></app-profile>
+    <app-add-food *ngIf="panelSelector === PanelSelector.AddFood"></app-add-food>
+    <app-show-foods *ngIf="panelSelector === PanelSelector.ShowFood"></app-show-foods>
+    <app-orders-panel *ngIf="panelSelector === PanelSelector.Orders"></app-orders-panel>
+</div>

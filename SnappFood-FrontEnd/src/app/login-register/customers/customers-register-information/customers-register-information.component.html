@@ -1,0 +1,43 @@
+<form (ngSubmit)="register()">
+    <div class="name-region-container">
+        <p class="name">
+            <mat-form-field appearance="standard">
+                <mat-label>نام و نام خانوادگی</mat-label>
+                <input [formControl]="customerNameFormControl" name="customer_name" [(ngModel)]="loginRegisterService.customerRegister.name" matInput placeholder="">
+                <mat-error *ngIf="customerNameFormControl.hasError('required')">
+                    وارد کردن نام <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+
+        <p class="region">
+            <mat-form-field>
+                <mat-label>منطقه</mat-label>
+                <input [formControl]="customerRegionFormControl" name="customer-region" matInput [(ngModel)]="loginRegisterService.customerRegister.region" type="number" class="example-right-align" placeholder="0" min="1" max="22">
+                <mat-icon matSuffix class="map-icon" (click)="showMap = !showMap">place</mat-icon>
+                <mat-error *ngIf="customerRegionFormControl.hasError('required')">
+                    وارد کردن منطقه <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field class="example-full-width">
+                <mat-label>آدرس</mat-label>
+                <textarea [formControl]="customerAddressFormControl" name="customer_address" [(ngModel)]="loginRegisterService.customerRegister.address" matInput placeholder=""></textarea>
+                <mat-error *ngIf="customerAddressFormControl.hasError('required')">
+                    وارد کردن آدرس <strong>الزامی</strong> است.
+                </mat-error>
+            </mat-form-field>
+        </p>
+    </div>
+    <section>
+        <div class="example-button-row">
+            <button name="submit" mat-raised-button color="accent" style="float: right;" type="submit">ثبت</button>
+            <ng-content></ng-content>
+        </div>
+    </section>
+</form>
+<app-map-visualizer *ngIf="showMap" (regionClicked)="onRegionClicked($event)">
+    <div [ngClass]="{'show-map': showMap}" id="map-container"></div>
+</app-map-visualizer>

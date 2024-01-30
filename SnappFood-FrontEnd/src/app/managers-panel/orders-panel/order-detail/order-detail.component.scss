@@ -1,0 +1,55 @@
+.food-detail-container {
+  width: 100vw;
+  height: calc(100vh - 64px);
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.header {
+  width: 100%;
+  height: calc(100vh - 64px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  mat-card {
+    width: 70%;
+  }
+}
+
+.body {
+  display: inline-block;
+  height: calc(100vh - 64px);
+  width: 100%;
+
+  overflow-y: scroll;
+
+  .comment {
+    width: 70%;
+    margin: 10px 10px;
+
+    mat-card {
+      input {
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        border-bottom: solid 1px #fff;
+        outline: none;
+        caret-color: white;
+        color: white;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 805px) {
+  .food-detail-container {
+    grid-template-columns: 100%;
+
+    overflow-y: scroll;
+  }
+
+}

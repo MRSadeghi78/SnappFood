@@ -1,0 +1,5 @@
+<div class="show-foods-container">
+    <div class="foods-container" >
+        <app-food-customer *ngFor="let food_tmp of customersSerivce.foods; let i = index" [food]="food_tmp"></app-food-customer>
+    </div>
+</div>

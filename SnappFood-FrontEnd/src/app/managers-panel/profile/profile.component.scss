@@ -1,0 +1,147 @@
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.name-region-container {
+  width: 100%;
+}
+
+.name,
+.region {
+  display: inline-block;
+  width: calc(50% - 20px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+.region {
+  padding-top: 14px;
+  float: left;
+}
+
+.example-full-width {
+  width: calc(100% - 20px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.map-icon {
+  cursor: pointer;
+}
+
+#map-container {
+  position: fixed;
+  top: 100vh;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.show-map {
+  top: 0px !important;
+}
+
+.regions {
+  width: calc(100% - 60px);
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  float: right;
+}
+
+.region-map {
+  margin-top: 20px;
+  margin-right: 10px;
+  float: right;
+}
+
+.example-button-row button {
+  margin: 10px;
+}
+
+.regions {
+  margin-bottom: 10px;
+}
+
+.range-time {
+  width: calc(100% - 20px);
+  margin: 0px 10px;
+  margin-top: 5px;
+  font-size: 10px;
+  .labels {
+    width: 100%;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+    .start {
+      display: inline-block;
+      width: 50%;
+    }
+    .end {
+      display: inline-block;
+      margin-right: 10px;
+      width: calc(50% - 10px);
+    }
+  }
+
+  .inputs {
+    width: 100%;
+    .start {
+      display: inline-block;
+      width: calc(50% - 15px);
+      margin-left: 10px;
+      height: 35px;
+    }
+
+    .end {
+      display: inline-block;
+      height: 35px;
+      margin-right: 10px;
+      width: calc(50% - 10px);
+    }
+  }
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%) sepia(0%) saturate(7479%) hue-rotate(70deg)
+    brightness(99%) contrast(107%);
+  width: 15px;
+  height: 15px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="time"] {
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid;
+}
+
+mat-card {
+  height: auto;
+}
